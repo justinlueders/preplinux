@@ -1,0 +1,8 @@
+ROUTE PORT 80 to another port ...like 3000 maybe?
+
+iptables -A INPUT -i eth0 -p tcp --dport 80 -j ACCEPT
+
+iptables -A INPUT -i eth0 -p tcp --dport 8080 -j ACCEPT
+
+iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8080
+
