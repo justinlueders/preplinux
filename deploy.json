@@ -1,0 +1,66 @@
+[
+  {
+    "name": "regex",
+    "Image": "jreeme/strongloop:10",
+    "DockerFilePath": "docker/strong-pm",
+    "Hostname": "regex",
+    "ExposedPorts": {
+      "3001/tcp": {}
+    },
+    "HostConfig": {
+      "PortBindings": {
+        "3001/tcp": [
+          {
+            "HostPort": "3002"
+          }
+        ],
+        "8701/tcp": [
+          {
+            "HostPort": "8701"
+          }
+        ]
+      }
+    },
+    "ExpressApps": [
+      {
+        "GitUrl": "https://github.com/Sotera/DatawakeSampleExtractor",
+        "GitSrcBranchName": "regex",
+        "StrongLoopBranchName": "deploy",
+        "StrongLoopServerUrl": "http://localhost:8701",
+        "ServiceName": "DatawakeRegexExtractor"
+      }
+    ]
+  },
+  {
+    "name": "stanford",
+    "Image": "jreeme/sljava",
+    "DockerFilePath": "docker/strong-pm-java8",
+    "Hostname": "stanford",
+    "ExposedPorts": {
+      "3001/tcp": {}
+    },
+    "HostConfig": {
+      "PortBindings": {
+        "3001/tcp": [
+          {
+            "HostPort": "3003"
+          }
+        ],
+        "8701/tcp": [
+          {
+            "HostPort": "8702"
+          }
+        ]
+      }
+    },
+    "ExpressApps": [
+      {
+        "GitUrl": "https://github.com/Sotera/DatawakeSampleExtractor",
+        "GitSrcBranchName": "stanford-ner",
+        "StrongLoopBranchName": "deploy",
+        "StrongLoopServerUrl": "http://localhost:8702",
+        "ServiceName": "DatawakeStanfordNerExtractor"
+      }
+    ]
+  }
+]
